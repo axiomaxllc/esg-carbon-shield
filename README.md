@@ -1,5 +1,13 @@
 # AXIOMAX ESG Carbon Shield — Public Verifier Spec
 
+[![Patent Pending USPTO](https://img.shields.io/badge/Patent_Pending-USPTO_64%2F081%2C419-C9A961?style=flat-square)](https://axiomaxllc.com)
+[![License: MIT (verifiers)](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
+[![Verify Test Vectors](https://github.com/axiomaxllc/esg-carbon-shield/actions/workflows/verify-test-vectors.yml/badge.svg)](https://github.com/axiomaxllc/esg-carbon-shield/actions/workflows/verify-test-vectors.yml)
+[![Hosted Verifier](https://img.shields.io/badge/Hosted_Verifier-verify.axiomaxllc.com-C9A961?style=flat-square)](https://verify.axiomaxllc.com)
+[![Browser Mirror](https://img.shields.io/badge/Browser_Mirror-axiomaxllc.github.io-C9A961?style=flat-square)](https://axiomaxllc.github.io/esg-carbon-shield/)
+
+
+
 > The world's first cryptographically verifiable sustainability certification system for AI inference workloads.
 > Patent Pending USPTO Application **64/081,419** (filed June 3, 2026).
 > Operated by **AXIOMAX LLC**, Salinas, Puerto Rico.
