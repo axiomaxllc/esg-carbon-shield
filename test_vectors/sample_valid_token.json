@@ -1,0 +1,16 @@
+{
+  "v": "axiomax_esg_token_v1",
+  "client_id": "demo_client_001",
+  "ts_issued_utc": "2026-06-07T07:06:07.027265+00:00",
+  "seq_first": 1,
+  "seq_last": 10,
+  "n_inferences": 10,
+  "total_tokens": 3619,
+  "total_wh_saved": 1.4935,
+  "total_liters_water_saved": 0.1448,
+  "total_co2_kg_saved": 0.0006,
+  "first_hash": "31d2735f157d796fa77aac88104e37e3e97d695c6d0d87e40fc751ca1b95d619",
+  "last_hash": "fc9dffa2b59de843a53c86cc33c601de7279c4a93393ac537066e8a2e3826d28",
+  "chain_integrity_check": true,
+  "signature_ed25519": "065d78aada3695cddf88b11ce363243808cdfa948e5219c0be1e0541a7c1b79e3bab9aac67f369ffd7ba60c78a08239d72f1c94f99fa6ffd26977f776d5bc100"
+}
