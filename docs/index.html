@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en" translate="no" class="notranslate">
+<head>
+<meta charset="utf-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AXIOMAX ESG Carbon Shield · Public Verifier (Offline Mirror)</title>
+<meta name="description" content="Offline cryptographic verifier for AXIOMAX ESG carbon attestation tokens. Patent Pending USPTO 64/081,419.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#C9A961;--gold-bright:#E8C771;--dark:#0a0806;--bg-2:#13100c;--bg-3:#1a1612;--text:#F5F3EE;--text-mute:#B8B5AD;--green:#3DA77D;--red:#B8543D;--border:#2A2520}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--text);line-height:1.6;font-weight:300;padding:0;min-height:100vh}
+nav{padding:20px 32px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:rgba(10,8,6,0.9);backdrop-filter:blur(20px);position:sticky;top:0;z-index:10}
+.logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:600}
+.logo .mind{color:var(--gold);font-style:italic;margin-left:4px;font-weight:400}
+nav a{color:var(--text-mute);text-decoration:none;font-size:13px;margin-left:24px}
+nav a:hover{color:var(--gold)}
+.container{max-width:980px;margin:0 auto;padding:60px 32px}
+h1{font-family:'Playfair Display',serif;font-size:44px;line-height:1.15;font-weight:600;margin-bottom:16px;letter-spacing:-0.02em}
+h1 em{color:var(--gold);font-style:italic;font-weight:500}
+.subtitle{font-size:17px;color:var(--text-mute);margin-bottom:32px;max-width:720px}
+.notice{padding:18px 22px;background:rgba(201,169,97,0.08);border-left:3px solid var(--gold);border-radius:3px;margin-bottom:32px;font-size:14px;color:var(--text-mute)}
+.notice strong{color:var(--gold)}
+.tool{background:var(--bg-2);padding:32px;border-radius:6px;border:1px solid var(--border);margin-bottom:24px}
+.tool h2{font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin-bottom:14px;font-weight:600}
+label{display:block;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:600}
+textarea,select{width:100%;padding:14px;background:#000;color:var(--text);border:1px solid var(--border);border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.5}
+textarea{min-height:180px;resize:vertical}
+textarea:focus,select:focus{outline:none;border-color:var(--gold)}
+button{margin-top:14px;background:linear-gradient(135deg,var(--gold-bright) 0%,var(--gold) 100%);color:#000;border:none;padding:14px 28px;font-weight:700;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;border-radius:3px;cursor:pointer;box-shadow:0 0 24px rgba(232,199,113,0.25)}
+button:hover{background:linear-gradient(135deg,#F4D78A 0%,var(--gold-bright) 100%)}
+.result{margin-top:20px;padding:20px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.7;display:none}
+.result.show{display:block}
+.result.valid{background:rgba(61,167,125,0.08);border-left:3px solid var(--green);color:#7FE2A8}
+.result.invalid{background:rgba(184,84,61,0.08);border-left:3px solid var(--red);color:#FF8080}
+footer{padding:40px 32px;border-top:1px solid var(--border);text-align:center;font-size:12px;color:var(--text-mute);margin-top:60px}
+footer a{color:var(--gold);text-decoration:none}
+code{background:#000;padding:2px 6px;border-radius:2px;color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:12px}
+.cli-example{background:#000;padding:14px;border-radius:3px;margin-top:12px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text-mute);border:1px solid var(--border);overflow-x:auto}
+.cli-example .prompt{color:var(--gold)}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="logo" translate="no">AXIOMAX<span class="mind">MIND</span></div>
+<div>
+<a href="https://axiomaxllc.com">Main site</a>
+<a href="https://github.com/axiomaxllc/esg-carbon-shield">GitHub repo</a>
+<a href="https://verify.axiomaxllc.com">Hosted verifier</a>
+</div>
+</nav>
+
+<div class="container">
+
+<h1>Verify any AXIOMAX certificate <em>offline</em>.</h1>
+<p class="subtitle">This page runs the AXIOMAX ESG Carbon Shield verifier entirely in your browser using the Web Crypto API. No data leaves your machine. No AXIOMAX server is contacted. Pure ed25519 mathematics.</p>
+
+<div class="notice">
+<strong>This is a GitHub Pages mirror.</strong> If <code>axiomaxllc.com</code> ever goes offline, this verifier keeps working. The repository <code>github.com/axiomaxllc/esg-carbon-shield</code> is replicated across thousands of GitHub mirrors worldwide.
+</div>
+
+<div class="tool">
+<h2>1. Paste your token JSON</h2>
+<textarea id="tokenInput" placeholder='{"v":"axiomax_esg_token_v1","client_id":"...","signature_ed25519":"...","first_hash":"...", ...}'></textarea>
+
+<h2 style="margin-top:24px">2. Select client (or paste public key below)</h2>
+<select id="clientPick">
+<option value="demo_client_001">demo_client_001 (test client)</option>
+<option value="custom">— paste custom public key —</option>
+</select>
+
+<textarea id="pubkeyInput" placeholder="-----BEGIN PUBLIC KEY-----&#10;...ed25519 public key in PEM format...&#10;-----END PUBLIC KEY-----" style="margin-top:14px;display:none"></textarea>
+
+<button onclick="runVerify()">Verify Token</button>
+
+<div id="result" class="result"></div>
+</div>
+
+<div class="tool">
+<h2>Or verify from the command line</h2>
+<p style="font-size:14px;color:var(--text-mute);margin-bottom:8px">For air-gapped audits or scripts:</p>
+<div class="cli-example">
+<span class="prompt">$</span> git clone https://github.com/axiomaxllc/esg-carbon-shield.git<br>
+<span class="prompt">$</span> cd esg-carbon-shield<br>
+<span class="prompt">$</span> python3 verifiers/verify.py your_token.json<br>
+&nbsp;&nbsp;&nbsp;✓ VALID · client demo_client_001 · 10 inferences · 1.4935 Wh saved
+</div>
+</div>
+
+</div>
+
+<footer>
+© 2026 AXIOMAX LLC · Salinas, Puerto Rico · Patent Pending USPTO <a href="https://patents.google.com/patent/US-64081419">64/081,419</a><br>
+Open-source verifier on <a href="https://github.com/axiomaxllc/esg-carbon-shield">GitHub</a> · Hosted version <a href="https://verify.axiomaxllc.com">verify.axiomaxllc.com</a>
+</footer>
+
+<script>
+const DEMO_PUBKEY = `-----BEGIN PUBLIC KEY-----
+MCowBQYDK2VwAyEADBnwdilw7k0oJEasGmK4l52YoMxnGHgmK3z7j980piM=
+-----END PUBLIC KEY-----`;
+
+document.getElementById('clientPick').addEventListener('change', e=>{
+  document.getElementById('pubkeyInput').style.display = e.target.value === 'custom' ? 'block' : 'none';
+});
+
+function canonicalize(obj){
+  if(obj===null||typeof obj!=='object')return JSON.stringify(obj);
+  if(Array.isArray(obj))return '['+obj.map(canonicalize).join(',')+']';
+  const k=Object.keys(obj).sort();
+  return '{'+k.map(x=>JSON.stringify(x)+':'+canonicalize(obj[x])).join(',')+'}';
+}
+function hexToBytes(h){const b=new Uint8Array(h.length/2);for(let i=0;i<b.length;i++)b[i]=parseInt(h.substr(i*2,2),16);return b;}
+function pemToBin(p){const b64=p.replace(/-----[^-]+-----/g,'').replace(/\s/g,'');const r=atob(b64);const b=new Uint8Array(r.length);for(let i=0;i<r.length;i++)b[i]=r.charCodeAt(i);return b;}
+
+async function runVerify(){
+  const resEl=document.getElementById('result');
+  resEl.className='result';
+  resEl.classList.add('show');
+  try{
+    const token=JSON.parse(document.getElementById('tokenInput').value);
+    const pick=document.getElementById('clientPick').value;
+    let pem;
+    if(pick==='custom'){
+      pem=document.getElementById('pubkeyInput').value.trim();
+      if(!pem){throw new Error('Paste a public key in PEM format');}
+    }else{
+      pem=DEMO_PUBKEY;
+    }
+    const sigHex=token.signature_ed25519;
+    if(!sigHex){throw new Error('Token missing signature_ed25519');}
+    const copy={...token};delete copy.signature_ed25519;
+    const canonical=canonicalize(copy);
+    const msg=new TextEncoder().encode(canonical);
+    const sig=hexToBytes(sigHex);
+    const keyBytes=pemToBin(pem);
+    const key=await crypto.subtle.importKey('spki',keyBytes,{name:'Ed25519'},false,['verify']);
+    const ok=await crypto.subtle.verify('Ed25519',key,sig,msg);
+    if(ok){
+      resEl.classList.add('valid');
+      resEl.innerHTML=`<strong>✓ VALID</strong><br>
+client: ${token.client_id}<br>
+inferences: ${token.n_inferences}<br>
+total tokens: ${token.total_tokens||'—'}<br>
+energy saved: ${token.total_wh_saved} Wh<br>
+water saved: ${token.total_liters_water_saved} L<br>
+CO₂ saved: ${(token.total_co2_kg_saved*1000).toFixed(4)} g<br>
+period: seq ${token.seq_first} – ${token.seq_last}<br>
+issued: ${token.ts_issued_utc}`;
+    }else{
+      resEl.classList.add('invalid');
+      resEl.innerHTML=`<strong>✗ INVALID</strong><br>signature does not match the provided public key.<br>The token has been tampered with, or the wrong public key was used.`;
+    }
+  }catch(e){
+    resEl.classList.add('invalid');
+    resEl.innerHTML=`<strong>✗ ERROR</strong><br>${e.message}`;
+  }
+}
+</script>
+</body>
+</html>
