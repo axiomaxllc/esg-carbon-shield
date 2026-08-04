@@ -11,7 +11,7 @@
 
 ## What it does
 
-Every AI inference call your company makes gets cryptographically signed using ed25519 (RFC 8032) over a SHA-256 hash chain (FIPS 180-4). Anyone can verify any token publicly at https://verify.axiomaxllc.com without authentication.
+Every AI inference call your company makes gets cryptographically signed using ed25519 (RFC 8032) over a SHA-256 hash chain (FIPS 180-4). Anyone can verify any token publicly at https://axiomaxllc.com without authentication.
 
 This means:
 - **CSO/CFO** gets auditor-grade evidence for CSRD/SEC/SB-253 disclosures
@@ -82,10 +82,10 @@ Three tiers:
 
 ## Public verification
 
-Anyone can verify any AXIOMAX token at https://verify.axiomaxllc.com:
+Anyone can verify any AXIOMAX token at https://axiomaxllc.com:
 
 ```bash
-curl -X POST https://verify.axiomaxllc.com/v1/verify \
+curl -X POST https://axiomaxllc.com/v1/verify \
   -d @your_token.json
 ```
 
