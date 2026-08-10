@@ -46,8 +46,11 @@ PY
 
 xxd -r -p "$TMP_DIR/sig.hex" > "$TMP_DIR/sig.bin"
 
+# Se usa el CODIGO DE SALIDA de openssl, no su texto: el mensaje cambia entre
+# versiones ("Signature Verified Successfully" en OpenSSL 3) y entre idiomas,
+# y comparar textos hacia que un token valido se reportara como invalido.
 if openssl pkeyutl -verify -pubin -inkey "$PUBKEY_FILE" \
-   -rawin -in "$TMP_DIR/canonical.bin" -sigfile "$TMP_DIR/sig.bin" 2>/dev/null | grep -q "Successfully Verified"; then
+   -rawin -in "$TMP_DIR/canonical.bin" -sigfile "$TMP_DIR/sig.bin" >/dev/null 2>&1; then
     META=$(python3 -c "import json,sys; t=json.load(open(sys.argv[1])); print(f\"{t['n_inferences']} inferences · {t['total_wh_saved']} Wh saved · {t.get('total_co2_kg_saved',0)*1000:.4f} g CO2 saved\")" "$TOKEN_FILE")
     echo "✓ VALID · client $CLIENT_ID · $META"
     exit 0
